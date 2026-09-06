@@ -1,0 +1,95 @@
+# Global config for THE MOMENT kit.
+film_title: "THE MOMENT"
+shots_file: shots_bangalore.json   # definitive Bangalore-years cut (Observer spine + ECT + possessiveness)
+                                   # other cuts: shots_moment.json / shots_moment_5min.json / _10min.json
+fps: 24
+interpolate_fps: 48
+width: 1280
+height: 720
+base_model: Wan2.2-S2V
+quant: Q8                          # Q5/Q6 fallback on a single T4; never Q4 for finals
+steps: 30
+cfg: 5.5
+sampler: uni_pc
+scheduler: beta
+upscale: 1.75
+rejection_samples: 3               # take best of N per shot
+codeformer_fidelity: 0.7
+max_clip_seconds: 5
+
+paths:
+  refs: refs
+  script: script/lines.csv
+  audio_bg: audio/bg
+  audio_prompts: audio/prompts.csv
+  work: /tmp/moment_work            # scratch (NOT /kaggle/working which is capped)
+  out: output
+  models: /kaggle/input/moment-models  # read-only model dataset mount
+
+tts:
+  hindi: ai4bharat/indic-parler-tts
+  english: hexgrad/Kokoro-82M
+  backup: myshell-ai/MeloTTS-English
+
+score:
+  duck_db: 18                       # duck music under narration
+  crossfade_ms: 1200
+  shared_pad: true                  # faint pad under whole film for continuity
+  # One continuous soundtrack. Each movement = one song file spanning its shots,
+  # crossfaded into the next. Drop the matching file into audio/bg/ (empty slot -> AI stem).
+  movements:
+    origin:            { file: origin.mp3,            shots: [p01_thin_boy, p02_rejection] }
+    gehra_hua:         { file: gehra_hua.mp3,         shots: [b03_interview, b03_tribute, b03a_minute, b03b_tap] }
+    nindaraan:         { file: nindaraan.mp3,         shots: [b03b2_embrace, b03b2_confession, b03b2_reply, b03b2_plea, b03b2_vo] }
+    mora_piya:         { file: mora_piya.mp3,         shots: [b03c_nooneshearing, b03c2_possessive, b03e_appraisal, b03e2_angel, b03f_apology, b03d_father, b04_trembling, b04a_leaving_project, b04b_lift, b04c_observer] }
+    lady_in_red:       { file: lady_in_red.mp3,       shots: [b05_doctor, b05i_dress, b05i_vo] }
+    hallucination_bed: { file: hallucination_bed.mp3, shots: [b05e_numbing, b05f_hallucination] }
+    tu_jo_nahin:       { file: tu_jo_nahin.mp3,       shots: [b05f2_ect, b05f3_aftermath, b05f4_vegetable, b05f5_norecognition, b05wl_wohlamhe, b05om_omkara, b05g_panic, b05f6_doyouremember] }
+    chal_chale:        { file: chal_chale.mp3,        shots: [b05f7_lastpoint, b05f8_emptyroom, b06_leaving_bangalore] }
+    boba_tunnel:       { file: boba_tunnel.mp3,       shots: [b07_silchar, b07_endcard] }
+
+gpu:
+  hero_shots_mode: A                # pooled/DisTorch, Q8@720p
+  simple_shots_mode: B              # split, one card per shot
+  always_stage_split: true          # mode C
+
+# ---- Hardware profiles (v3.1) ------------------------------------------------
+# Switch cards with ONE line: set active_profile below. The chosen profile's
+# values override the matching keys above at load time (via src/cfgutil.py).
+#   kaggle_2xt4  -> FREE (Kaggle ~30 GPU-hr/week, 2x T4). Full quality. $0 at risk.
+#   lightning_l4 -> single L4 24GB (Ada, fp8). Cost-cut to fit a few dollars /
+#                   your free monthly L4 hours. L4 = $0.48/GPU-hr (verified 2026).
+active_profile: kaggle_2xt4
+
+profiles:
+  kaggle_2xt4:
+    num_gpus: 2
+    attention: xformers        # T4 = Turing sm_75: NO fp8 / NO SageAttention
+    quant: Q8
+    rejection_samples: 3
+    steps: 30
+    upscale: 1.75
+    width: 1280
+    height: 720
+    rate_per_gpu_hr: 0.0       # Kaggle free tier
+    comfy_flags: "--cache-none --disable-smart-memory"
+  lightning_l4:
+    num_gpus: 1
+    attention: fp8             # L4 = Ada sm_89: fp8 OK -> faster
+    quant: Q6                  # cost-saver, fits 24GB easily
+    rejection_samples: 1       # biggest cost lever: 1 take vs 3 (~3x cheaper)
+    steps: 24
+    upscale: 1.5
+    width: 1152
+    height: 648
+    rate_per_gpu_hr: 0.48      # $/GPU-hr on-demand (lightning.ai/pricing, 2026)
+    comfy_flags: "--fast --cache-none"
+
+# ---- Music policy (added 12 Jul 2026) ----
+# This film is carried by near-constant first-person narration, so songs play as
+# INSTRUMENTALS under the voice (real melody, no competing lyrics). The full sung
+# version rises only at the very end, after the last narration line rests.
+music_policy:
+  under_narration: instrumental   # use instrumental/karaoke versions of the real songs
+  vocals_swell_at_end: true       # closing song's sung version may play out at the finish
+  end_movement: boba_tunnel       # movement where vocals may swell after narration ends

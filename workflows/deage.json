@@ -1,0 +1,10 @@
+{
+  "_comment": "Diffusion age-edit to build young reference set",
+  "_nodes_used": [
+    "InstantID",
+    "PuLID",
+    "KSampler",
+    "VAEDecode"
+  ],
+  "nodes": {}
+}

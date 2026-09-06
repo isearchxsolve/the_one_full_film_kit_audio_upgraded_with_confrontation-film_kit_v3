@@ -1,0 +1,9 @@
+{
+  "_comment": "SUPIR/SeedVR2/4x-UltraSharp two-stage upscale",
+  "_nodes_used": [
+    "SUPIR",
+    "UpscaleModelLoader",
+    "ImageUpscaleWithModel"
+  ],
+  "nodes": {}
+}

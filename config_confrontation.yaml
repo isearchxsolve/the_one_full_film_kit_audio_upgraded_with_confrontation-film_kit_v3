@@ -1,0 +1,86 @@
+film_title: THE_CONFRONTATION_CLIP
+shots_file: shots_confrontation.json
+fps: 24
+interpolate_fps: 48
+width: 1280
+height: 720
+base_model: Wan2.2-S2V
+quant: Q8
+steps: 30
+cfg: 5.5
+sampler: uni_pc
+scheduler: beta
+upscale: 1.75
+rejection_samples: 3
+codeformer_fidelity: 0.7
+max_clip_seconds: 5
+paths:
+  refs: refs
+  script: script/lines_confrontation.csv
+  audio_bg: audio/bg_confrontation
+  audio_prompts: audio/prompts_confrontation.csv
+  work: /tmp/confrontation_work
+  out: output_confrontation
+  models: /kaggle/input/moment-models
+character_forge:
+  enabled: true
+  targets:
+  - kunal_young
+  - gunja
+  workflow: charforge
+  out_root: refs
+  overwrite: false
+tts:
+  english: hexgrad/Kokoro-82M
+  backup: myshell-ai/MeloTTS-English
+  hindi: ai4bharat/indic-parler-tts
+score:
+  duck_db: 18
+  crossfade_ms: 2200
+  shared_pad: true
+  movements:
+    confrontation:
+      file: confrontation.mp3
+      shots:
+      - confrontation_clip
+  chorus_gain_db: -15
+gpu:
+  hero_shots_mode: A
+  simple_shots_mode: B
+  always_stage_split: true
+active_profile: kaggle_2xt4
+profiles:
+  kaggle_2xt4:
+    num_gpus: 2
+    attention: xformers
+    quant: Q8
+    rejection_samples: 3
+    steps: 30
+    upscale: 1.75
+    width: 1280
+    height: 720
+    rate_per_gpu_hr: 0.0
+    comfy_flags: --cache-none --disable-smart-memory
+  lightning_l4:
+    num_gpus: 1
+    attention: fp8
+    quant: Q6
+    rejection_samples: 1
+    steps: 24
+    upscale: 1.5
+    width: 1152
+    height: 648
+    rate_per_gpu_hr: 0.48
+    comfy_flags: --fast --cache-none
+music_policy:
+  under_narration: cinematic_original_score_ducked_under_dialogue
+  swell_in_wordless_beats: true
+  wordless_beats:
+  - obs07_laugh
+  - obs10_ectoverload
+  - obs11_rebuild
+  - obs15_stand
+  - obs26_lastlook
+  - obs27_gone
+  original_only: true
+real_characters: []

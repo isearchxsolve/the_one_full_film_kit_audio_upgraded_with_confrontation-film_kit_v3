@@ -1,0 +1,8 @@
+{
+  "_comment": "Wan FLF2V first-last-frame continuation / reveals",
+  "_nodes_used": [
+    "WanFirstLastFrameToVideo",
+    "VAEDecode"
+  ],
+  "nodes": {}
+}

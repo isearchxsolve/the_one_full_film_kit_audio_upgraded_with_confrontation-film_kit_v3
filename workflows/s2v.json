@@ -1,0 +1,9 @@
+{
+  "_comment": "Wan2.2-S2V talking shots (photo + voice -> performance)",
+  "_nodes_used": [
+    "WanSoundImageToVideo",
+    "PuLID",
+    "VAEDecode"
+  ],
+  "nodes": {}
+}

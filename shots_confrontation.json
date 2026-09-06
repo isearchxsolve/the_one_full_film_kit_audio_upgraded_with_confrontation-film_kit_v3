@@ -1,0 +1,107 @@
+{
+ "film": "THE CONFRONTATION CLIP",
+ "note": "Standalone confrontation clip extracted from THE ONE and upgraded with the same cinematic voice, original dramatic score, and final-mix pipeline.",
+ "globals": {
+  "fps": 24,
+  "width": 1280,
+  "height": 720,
+  "base_model": "Wan2.2-S2V",
+  "quant": "Q8",
+  "steps": 30,
+  "cfg": 5.5,
+  "sampler": "uni_pc",
+  "scheduler": "beta",
+  "interpolate_to_fps": 48,
+  "upscale": 1.75,
+  "rejection_samples": 3,
+  "tone": "high-contrast expressionist cinema in the tradition of Christopher Nolan and Roger Deakins; IMAX-scale nocturnal atmosphere, anamorphic wide lensing, dramatic chiaroscuro with a single hard motivated key light carving the subject out of deep blacks; volumetric haze, rain-sheen on every surface, monumental negative space with the figure often small against vast architecture; slow deliberate camera, patient push-ins and craning reveals; a mythic, dreamlike unreality, brooding, majestic and severe; painterly darkness, photoreal, fine film grain, highly detailed, cinematic color grade; NOT cheerful, NOT comedic",
+  "negative_prompt": "cartoon, anime, illustration, cgi look, video-game render, low quality, blurry, soft focus, deformed anatomy, extra fingers, extra limbs, malformed hands, watermark, text overlay, logo, subtitles, oversaturated, garish colors, bright flat daylight, sitcom lighting, cheerful, comedic, slapstick, circus clown makeup, rainbow colors, party balloons, gore, blood spatter"
+ },
+ "character_design": {
+  "observer": {
+   "summary": "A wholly invented, separate character — NOT Kunal's likeness. A tall, gaunt, aged man in his late 40s–50s: weathered skin, deep lines, a greying dark beard, hollow cheeks, a once-boyish face now hardened by years. Machine-augmented resurrection: subtle cybernetics, a faint chrome seam tracing the left jaw and temple, a hairline of metal at the neck, one eye faintly luminous (cold pale-blue augmented iris), the other human and dark. Gray-shade Joker register: worn bone-white greasepaint, cracked and imperfect, with a fixed 'stressed smile' painted at the mouth — a strained rictus, NOT a happy grin, NOT circus clown. The greasepaint is concealment, not decoration: beneath it the face was lost to a therapy-machine detonation and rebuilt, so the paint and the chrome half-hide old ruin where flesh was erased (always suggested in shadow, never shown graphically). Costume: a long, dark, weathered high-collared coat, an iconic monumental silhouette. Dignified, severe, unreadable.",
+   "forge_prompts": {
+    "face_front": "cinematic portrait, a gaunt aged man late 40s, weathered deeply-lined face, greying dark beard, hollow cheeks, worn cracked bone-white greasepaint, a fixed strained 'stressed smile' painted at the mouth (not a happy grin, not circus clown), one cold pale-blue faintly-luminous augmented eye and one dark human eye, a faint chrome seam along the left jaw and temple, the cracked greasepaint half-concealing suggested old scarring and a chrome-rebuilt jaw where flesh was lost (kept in shadow, never graphic), front view, hard single key light, deep black background, dramatic chiaroscuro, photoreal, film grain, highly detailed",
+    "face_threequarter": "cinematic portrait, same gaunt aged bearded man, worn white greasepaint and strained painted smile, augmented left jaw seam catching the light, three-quarter angle, single motivated key light, deep shadow, photoreal, highly detailed",
+    "face_profile": "cinematic profile portrait, same gaunt aged bearded man, white greasepaint, chrome seam at temple and neck, luminous augmented eye, profile view against black, rim light, photoreal, highly detailed",
+    "body_full": "full body cinematic shot, tall gaunt aged man in a long dark weathered high-collared coat, monumental silhouette, worn white face paint, standing in volumetric haze, single hard key light, deep chiaroscuro, anamorphic, photoreal, highly detailed",
+    "body_coat": "full body, the same figure from behind and side, long dark coat trailing, high collar, iconic silhouette against a vast dark nocturnal cityscape, rim light, photoreal, highly detailed"
+   },
+   "forge_count_per_prompt": 2,
+   "seed_base": 77
+  },
+  "kunal_young": {
+   "summary": "The protagonist as a young man (early-mid 20s): an original invented character (not a real or famous person): a gentle-faced man with warm deep-set dark eyes holding a quiet melancholy, soft expressive features, calm tender mouth, understated cinematic gravitas, fair-skinned Western, lean, smooth unlined skin, thick dark hair, a boyish softness and luminous hopeful eyes, vulnerable and tender. Naturalistic, real.",
+   "forge_prompts": {
+    "face_front": "cinematic portrait, an original invented character (not a real or famous person): a gentle-faced man with warm deep-set dark eyes holding a quiet melancholy, soft expressive features, calm tender mouth, understated cinematic gravitas, fair-skinned Western, early-mid 20s, lean smooth unlined face, thick dark hair, boyish softness, luminous hopeful eyes, front view, soft naturalistic key light, shallow depth of field, photoreal, film grain, highly detailed",
+    "face_threequarter": "cinematic portrait, same young man, early-mid 20s, tender expressive eyes, thick dark hair, three-quarter angle, soft motivated light, photoreal, highly detailed",
+    "face_profile": "cinematic profile portrait, same young man early 20s, gentle features, dark hair, profile against soft grey, natural light, photoreal, highly detailed",
+    "body_full": "full body cinematic shot, a slender gentle young man early 20s in plain modest 1990s Western clothes, quiet posture, natural daylight, photoreal, highly detailed",
+    "body_coat": "full body, the same young man walking, plain shirt, ordinary Western city street behind, natural light, photoreal, highly detailed"
+   },
+   "forge_count_per_prompt": 2,
+   "seed_base": 101
+  },
+  "kunal_40s": {
+   "summary": "The same man aged into his 40s: an original invented character (not a real or famous person): a gentle-faced man with warm deep-set dark eyes holding a quiet melancholy, soft expressive features, calm tender mouth, understated cinematic gravitas, fair-skinned Western, now lined and worn, tired shadowed eyes, flecks of grey at the temples, heavier and slower, dignified but broken-in. The same bone structure and the same gentle eyes as the young man.",
+   "forge_prompts": {
+    "face_front": "cinematic portrait, an original invented character (not a real or famous person): a gentle-faced man with warm deep-set dark eyes holding a quiet melancholy, soft expressive features, calm tender mouth, understated cinematic gravitas, fair-skinned Western, aged into the 40s, lined forehead, tired shadowed deep-set eyes, flecks of grey at the temples, worn dignified face, front view, hard motivated key light, deep shadow, photoreal, film grain, highly detailed",
+    "face_threequarter": "cinematic portrait, same man in his 40s, lined weary gentle face, greying temples, three-quarter angle, dramatic single key light, deep chiaroscuro, photoreal, highly detailed",
+    "face_profile": "cinematic profile portrait, same man in his 40s, worn gentle features, greying hair, profile against black, rim light, photoreal, highly detailed",
+    "body_full": "full body cinematic shot, a tired dignified man in his 40s in plain dark clothes, heavier slower posture, volumetric low light, photoreal, highly detailed",
+    "body_coat": "full body, the same 40s man standing alone in a dim room, plain dark clothes, single window light, photoreal, highly detailed"
+   },
+   "forge_count_per_prompt": 2,
+   "seed_base": 131
+  },
+  "gunja": {
+   "summary": "Her, the woman he loved (late 20s-30s): an original invented character (not a real or famous person): a luminous, regal woman with a cool penetrating gaze, sharp architectural cheekbones, clear intelligent eyes, a composed and formidable presence, understated cinematic gravitas, an elegant, fair, luminous Western woman, poised and brilliant, quietly commanding, warm beneath a formidable stillness, dressed in elegant evening gowns and tailored dresses. Naturalistic, real.",
+   "forge_prompts": {
+    "face_front": "cinematic portrait, an original invented character (not a real or famous person): a luminous, regal woman with a cool penetrating gaze, sharp architectural cheekbones, clear intelligent eyes, a composed and formidable presence, understated cinematic gravitas, an elegant, fair, luminous Western woman, late 20s-30s, luminous skin, sharp cheekbones, clear penetrating intelligent eyes, composed formidable expression, front view, soft naturalistic key light, shallow depth of field, photoreal, film grain, highly detailed",
+    "face_threequarter": "cinematic portrait, the same woman, late 20s-30s, regal luminous face, intelligent eyes, three-quarter angle, soft motivated light, photoreal, highly detailed",
+    "face_profile": "cinematic profile portrait, the same woman, elegant architectural features, hair swept back, profile against soft grey, natural light, photoreal, highly detailed",
+    "body_full": "full body cinematic shot, a poised elegant woman late 20s-30s in a graceful evening gown, quiet commanding posture, natural daylight, photoreal, highly detailed",
+    "body_coat": "full body, the same woman in an elegant tailored dress, standing composed in a bright architect studio, natural light, photoreal, highly detailed"
+   },
+   "forge_count_per_prompt": 2,
+   "seed_base": 161
+  }
+ },
+ "characters": {
+  "kunal": {
+   "refs": "refs/kunal",
+   "era_default": "young",
+   "era_refs": {
+    "young": "refs/kunal_young",
+    "40s": "refs/kunal_40s"
+   },
+   "tokens": "serious, solemn, sorrowful, reverent, silent, tense jaw, downcast or fixed gaze, no smile, modestly dressed in simple formal attire"
+  },
+  "gunja": {
+   "refs": "refs/gunja",
+   "tokens": "tall elegant dignified woman, late 20s, strong expressive brows, thick wavy dark hair, fair luminous complexion; serious, warm, emotional; (rare) faint guarded almost-smile, restrained; ALWAYS fully modestly dressed in an elegant dress or formal wear"
+  },
+  "observer": "The invented machine-augmented creature. Generated, never photographed. The only recurring figure in the film."
+ },
+ "shots": [
+  {
+   "id": "confrontation_clip",
+   "dur": 10,
+   "chars": [
+    "kunal",
+    "gunja"
+   ],
+   "era": "young",
+   "talking": false,
+   "vo": true,
+   "camera": "slow push-in office two-shot, then reaction close-up",
+   "mode": "A",
+   "song": "confrontation",
+   "prompt": "standalone dramatic confrontation clip: a restrained office scene, a woman colleague has just left the young man's desk; Gunja crosses the room and confronts him directly, not shouting, but quietly fierce and deeply hurt; she stands close enough to own the frame while keeping full modest distance; he looks frightened, lowers his eyes, and nods; the camera holds on the emotional power shift, real human tension, no melodrama, no romance pose, fully modest, cinematic realism",
+   "palette": "warm office light draining toward cool grey, soft chiaroscuro, restrained desaturation, real film grain",
+   "negative": "smiling, grinning, laughing, cheerful, happy expression, teeth showing, playful, celebratory, nudity, nude, skin exposure, cleavage, bare shoulders, bare midriff, revealing or short clothing, sensual, seductive, suggestive, vulgar, sexual or intimate contact, kissing, extra fingers, deformed hands, blurry, low quality, shouting, exaggerated acting, soap opera, comedy, flirtation, kissing, sexual tension, revealing clothes",
+   "tone": "cinematic realism, shot on 35mm with fine film grain, subtle anamorphic flare; deliberate disciplined composition with generous negative space, the figure often small and isolated in the frame; a single motivated light source, soft chiaroscuro, deep quiet shadows; shallow depth of field, slow patient camera, mostly static or barely drifting; unhurried contemplative pacing that lets each moment breathe; mood-driven shadows, serious, restrained, melancholic, reverent, intimate; NOT a happy ending",
+   "movement": "confrontation"
+  }
+ ]
+}

@@ -1,0 +1,9 @@
+{
+  "_comment": "Wan Phantom two-person subject-to-video",
+  "_nodes_used": [
+    "WanPhantomSubjectToVideo",
+    "InstantID",
+    "VAEDecode"
+  ],
+  "nodes": {}
+}

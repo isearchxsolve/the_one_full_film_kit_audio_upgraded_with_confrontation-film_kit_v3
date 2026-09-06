@@ -1,0 +1,11 @@
+{
+  "_comment": "Text-to-image character design: generate invented-character reference stills (SDXL/Flux)",
+  "_nodes_used": [
+    "CheckpointLoaderSimple",
+    "CLIPTextEncode",
+    "KSampler",
+    "VAEDecode",
+    "SaveImage"
+  ],
+  "nodes": {}
+}
